@@ -1,0 +1,2261 @@
+DATEl 12 MAR 2026
+
+Terraform is an open-source Infrastructure as Code (IaC) tool developed by HashiCorp. 
+
+It allows you to define, provision, and manage infrastructure (like servers, databases, networks, etc.) using declarative configuration files, usually written in HashiCorp Configuration Language (HCL) or JSON.
+
+  - setup and maintenance of infrastructure across many cloud providers 
+
+  - Automation: No need to manually configure infrastructure.
+
+  - Version Control: Code can be stored in Git like app code.
+
+  - Repeatable: Run the same config in different environments.
+
+  - Multi-Cloud: Works across different cloud providers.
+  
+  
+ =======================
+Core Architecture Components
+Terraform Core (CLI)
+
+      Written in Go.      
+      Parses HCL configuration files (.tf)    
+
+
+Providers:
+       Plugins that allow Terraform to interact with APIs (e.g. AWS, Azure, GCP, Kubernetes).
+       
+       Define the types of resources available for management.
+       
+State File (terraform.tfstate)
+       
+       JSON file that stores metadata of managed resources.       
+
+       Used to track current infrastructure state.       
+
+       Can be stored locally or remotely (e.g. S3, Azure Blob).      
+
+       Ensures consistency and supports collaboration (with locking).
+
+ ==========
+
+ Terraform Workflow
+ 
+Write:Create configuration in .tf files.
+
+
+terraform init: Run terraform init to initialize the working directory and download providers.
+
+terraform  Plan: Run terraform plan to preview changes.
+
+terraform  Apply: Run terraform apply to provision/update resources.
+
+terraform  Destroy : Run terraform destroy to tear down infrastructure.
+
+
+INSTALL:
+
+https://developer.hashicorp.com/terraform/install
+
+env :
+
+path : C:\Users\Madhukiran\Desktop\BATCH17\TERRAFORM\terraform_1.14.7_windows_amd64
+
+
+
+aws cli 
+
+aws configure 
+    accesskey 
+	secet accesskey 
+	
+	xxxxxAKIASB5M6C5FNMxxxxxx
+	xxxxxxxxxxudsyoyZ+jeTsPHxxxxxxxxxx
+	
+================================
+
+terraform install 
+vis studio code install 
+
+aws configure -- 
+
+=======
+
+
+DATE: 13 MAR 2026
+
+
+
+====================================================================
+TERRAFORM LIFECYCLE 
+====================================================================
+
+--------------------------------------------------
+WHAT IS TERRAFORM?
+--------------------------------------------------
+
+    Terraform is an Infrastructure as Code (IaC) tool.
+
+    It allows you to create, modify, and destroy
+    cloud infrastructure using configuration files.
+
+    Example:
+        EC2
+        VPC
+        S3
+        Load Balancer
+
+
+--------------------------------------------------
+TERRAFORM LIFECYCLE (WORKFLOW)
+--------------------------------------------------
+
+    Terraform follows a standard workflow
+    for managing infrastructure.
+
+    The lifecycle has these main stages:
+
+        1) Write
+        2) Init
+        3) Plan 
+        4) Apply
+        5) Destroy
+
+
+--------------------------------------------------
+1) WRITE (DEFINE INFRASTRUCTURE)
+--------------------------------------------------
+
+    First step is writing Terraform configuration files.
+
+    File extension:
+        .tf
+
+    Example:
+        provider.tf
+        main.tf
+        variables.tf
+
+    These files define the infrastructure
+    you want to create.
+
+
+--------------------------------------------------
+2) TERRAFORM INIT
+--------------------------------------------------
+
+Command:
+
+    terraform init
+
+Purpose:
+
+    • Initializes Terraform working directory
+    • Downloads required providers
+    • Creates .terraform folder
+    • Prepares environment
+
+Example:
+
+    terraform init
+
+5
+--------------------------------------------------
+3) TERRAFORM PLAN
+--------------------------------------------------
+
+Command:
+
+    terraform plan
+
+Purpose:
+
+    • Shows what Terraform will create/change/delete
+    • No changes happen yet
+    • Just a preview
+	- Dry Run 
+
+Example output:
+
+    + create EC2 instance
+    ~ modify security group
+    - delete resource
+
+This step helps verify infrastructure changes.
+
+
+--------------------------------------------------
+4) TERRAFORM APPLY
+--------------------------------------------------
+
+Command:
+
+    terraform apply
+
+Purpose:
+
+    • Actually creates or modifies infrastructure
+    • Executes the plan generated earlier
+
+Example:
+
+    terraform apply
+
+After confirmation:
+
+    Resources will be created in AWS.
+
+
+--------------------------------------------------
+5) TERRAFORM DESTROY
+--------------------------------------------------
+
+Command:
+
+    terraform destroy
+
+Purpose:
+
+    • Deletes all infrastructure created by Terraform
+    • Used for cleanup
+
+Example:
+
+    terraform destroy
+
+
+--------------------------------------------------
+STATE FILE 
+--------------------------------------------------
+
+    Terraform maintains a state file: it stores provisioned infra of cloud in a file called 
+        terraform.tfstate
+
+    It stores:
+
+        • Resource IDs
+        • Infrastructure mapping
+        • Current state of resources
+
+    Without state file Terraform cannot track resources.
+
+
+--------------------------------------------------
+SIMPLE TERRAFORM WORKFLOW
+--------------------------------------------------
+
+    Write code
+        ↓
+    terraform init
+        ↓
+    terraform plan
+        ↓
+    terraform apply
+        ↓
+    Infrastructure created
+
+
+--------------------------------------------------
+REAL DEVOPS WORKFLOW
+--------------------------------------------------
+
+    Developer writes Terraform code
+        ↓
+    Code stored in Git
+        ↓
+    CI/CD pipeline runs Terraform
+        ↓
+    Infrastructure created automatically
+
+
+-------------------------------------------------
+
+
+====================================================================
+TERRAFORM PROVIDERS & TERRAFORM INIT – SHORT NOTES
+====================================================================
+
+--------------------------------------------------
+WHAT IS A TERRAFORM PROVIDER?  ( a logical abstration of api ) 
+--------------------------------------------------
+
+    A Provider is a plugin that allows Terraform
+    to interact with external platforms.
+
+    Examples of platforms:
+
+        • AWS
+        • Azure
+        • Google Cloud
+        • Kubernetes
+        • Docker
+        • GitHub
+
+    Terraform itself cannot talk to AWS or other
+    services directly.
+
+    Providers act as a bridge between Terraform
+    and the service API.
+
+
+--------------------------------------------------
+EXAMPLE PROVIDER
+--------------------------------------------------
+
+    provider "aws" {
+        region = "ap-south-1"
+    }
+
+    This tells Terraform:
+
+        "Use the AWS provider
+         to create resources in AWS."
+
+
+
+PROVIDERS:
+
+
+--------------------------------------------------
+WHAT DOES A PROVIDER DO?
+--------------------------------------------------
+
+    Provider communicates with the cloud API
+    and performs operations such as:
+
+        • Create resources
+        • Modify resources
+        • Delete resources
+        • Read resource information
+
+    Example resources:
+
+        aws_instance
+        aws_vpc
+        aws_s3_bucket
+============================================================================
+
+DATE:   14MAR 2026
+
+
+===================================================
+
+TERRAFORM IN MULTI REGION : 
+
+provider "aws" {
+  
+  region = "us-east-1"
+  alias = "nv"
+}
+
+provider "aws" {
+  
+  region = "ap-south-1"
+  alias = "mumbai"
+
+}
+
+resource "aws_instance" "sbox_nv" {
+
+    ami = "ami-053a45fff0a704a47"
+    instance_type = "t2.micro"
+    key_name = "madhukey"  
+
+    provider = aws.nv
+
+     tags = {
+    Name = "sbox-nv"
+    }
+
+}
+
+
+resource "aws_instance" "sbox_mumbai" {
+
+    ami = "ami-0ddfba243cbee3768"
+    instance_type = "t2.micro"
+    key_name = "mumbaib15"  
+
+    provider = aws.mumbai
+
+     tags = {
+    Name = "sbox-mumbai"
+    }
+
+}
+
+========================================
+
+
+
+
+
+MINI PROJECT :
+  1. create a VPC  - 10.81.0.0/16
+  2. Create Internet Gateway 
+  3. Create Custom Route Table 
+  4. Create a public Subnet  -- 10.81.3.0/24
+  5. Associate subnet with Route Table 
+  6. Create Security Group to allow port 22,80,443 or all ports , traffic  
+  7. Create a network interface with an ip in the subnet that was created in step 4  
+  8. Assign an elastic IP to the network interface created in step 7 
+  9. Create an ec2  server - LAUNCH APLICATION IN IT 
+===============
+
+
+
+DATE: 17 MAR 2026
+
+
+====================================================================
+TERRAFORM VARIABLES & VARIABLE FILES 
+====================================================================
+
+--------------------------------------------------
+WHAT ARE TERRAFORM VARIABLES?
+--------------------------------------------------
+
+    Terraform variables are used to make infrastructure
+    code reusable and flexible.
+
+    Instead of hardcoding values like region, instance type,
+    environment name, etc., we define variables and pass
+    values from external files.
+
+    This helps use the same Terraform code for multiple
+    environments (dev, staging, production).
+
+
+--------------------------------------------------
+DECLARING A VARIABLE
+--------------------------------------------------
+
+Example:
+
+    variable "region" {
+        description = "AWS region"
+        type        = string
+    }
+
+Using the variable:
+
+    provider "aws" {
+        region = var.region
+    }
+
+Here:
+    var.region means the value will come from
+    a variable file.
+
+
+--------------------------------------------------
+WHAT IS terraform.tfvars ?
+--------------------------------------------------
+
+    terraform.tfvars is the default variable file
+    used by Terraform.
+
+    Terraform automatically loads this file.
+
+Example:
+
+    region        = "ap-south-1"
+    instance_type = "t2.micro"
+    environment   = "dev"
+
+When we run:
+
+    terraform plan
+    terraform apply
+
+Terraform automatically reads terraform.tfvars.
+
+
+--------------------------------------------------
+WHAT IS sbx.tfvars ?
+--------------------------------------------------
+
+    sbx.tfvars is a custom variable file.
+
+    It is often used for specific environments.
+
+Example environments:
+
+    dev.tfvars
+    qa.tfvars
+    prod.tfvars
+    sbx.tfvars (sandbox environment)
+
+Example:
+
+    region        = "ap-south-1"
+    instance_type = "t3.micro"
+    environment   = "sandbox"
+
+
+--------------------------------------------------
+HOW TO USE CUSTOM tfvars FILE
+--------------------------------------------------
+
+Command:
+
+    terraform plan -var-file="sbx.tfvars"
+
+or
+
+    terraform apply -var-file="sbx.tfvars"
+
+Terraform will load values from that file.
+
+
+--------------------------------------------------
+WHAT IS vars.yaml ?
+--------------------------------------------------
+
+    vars.yaml is a YAML formatted variable file.
+
+    YAML files are sometimes used in automation
+    pipelines or DevOps workflows.
+
+Example vars.yaml:
+
+    region: ap-south-1
+    instance_type: t2.micro
+    environment: dev
+
+Terraform itself does not automatically read YAML
+files directly unless a script or tool converts them.
+
+
+--------------------------------------------------
+WHAT IS provider.yaml ?
+--------------------------------------------------
+
+    provider.yaml is not a standard Terraform file.
+
+    It may be used in automation systems or pipelines
+    to store provider configuration information.
+
+Example provider.yaml:
+
+    provider:
+      aws:
+        region: ap-south-1
+        profile: dev-account
+
+Usually Terraform provider configuration is written
+inside .tf files instead.
+
+
+--------------------------------------------------
+REAL DEVOPS PROJECT STRUCTURE
+--------------------------------------------------
+
+Example Terraform project:
+
+    terraform-project/
+
+        main.tf
+        variables.tf
+        provider.tf
+
+        terraform.tfvars
+        dev.tfvars
+        prod.tfvars
+        sbx.tfvars
+
+
+--------------------------------------------------
+WORKFLOW EXAMPLE
+--------------------------------------------------
+
+1) Write Terraform code
+
+2) Initialize project
+
+    terraform init
+
+3) Run with sandbox variables
+
+    terraform plan -var-file="sbx.tfvars"
+
+4) Apply infrastructure
+
+    terraform apply -var-file="sbx.tfvars"
+
+
+--------------------------------------------------
+SIMPLE SUMMARY
+--------------------------------------------------
+
+    Terraform Variables
+        Make code reusable.
+
+    terraform.tfvars
+        Default variable file.
+
+    sbx.tfvars
+        Custom environment variable file.
+
+    vars.yaml
+        YAML formatted variables (used in automation).
+
+    provider.yaml
+        Not standard Terraform file (pipeline usage).
+
+    Best Practice:
+        Use different tfvars files for different
+        environments.
+
+
+
+=========================================================================================================================
+DATE:  17 MAR 2026 
+
+
+====================================================================
+TERRAFORM WORKSPACES
+====================================================================
+
+--------------------------------------------------
+WHAT ARE TERRAFORM WORKSPACES?
+--------------------------------------------------
+
+    Workspaces allow you to manage multiple environments
+    (like dev, test, prod) using the SAME Terraform code.
+
+    Each workspace has its own separate state file.
+
+    Default workspace:
+        default
+
+
+--------------------------------------------------
+WHY DO WE NEED WORKSPACES?
+--------------------------------------------------
+
+    Without workspaces:
+        You need separate folders or code copies.
+
+    With workspaces:
+        • Same code
+        • Different environments
+        • Separate state files
+
+    Example:
+        dev → small instance
+        prod → large instance
+
+
+--------------------------------------------------
+HOW WORKSPACES WORK
+--------------------------------------------------
+
+    Terraform stores a separate state file
+    for each workspace.
+
+    Example:
+
+        default workspace → terraform.tfstate
+        dev workspace     → terraform.tfstate (dev)
+        prod workspace    → terraform.tfstate (prod)
+
+
+--------------------------------------------------
+IMPORTANT COMMANDS
+--------------------------------------------------
+
+    List workspaces:
+
+        terraform workspace list
+
+    Create new workspace:
+
+        terraform workspace new dev
+
+    Switch workspace:
+
+        terraform workspace select dev
+
+    Show current workspace:
+
+        terraform workspace show
+
+    Delete workspace:
+
+        terraform workspace delete dev
+
+
+
+
+
+--------------------------------------------------
+REAL-TIME DEVOPS USE CASE
+--------------------------------------------------
+
+    Scenario:
+        You have 3 environments:
+
+            dev
+            qa
+            prod
+
+    Steps:
+
+        terraform workspace new dev
+        terraform workspace new qa
+        terraform workspace new prod
+
+        terraform workspace select dev
+        terraform apply
+
+        terraform workspace select prod
+        terraform apply
+
+    Result:
+
+        Same code → Different environments
+
+
+--------------------------------------------------
+WORKSPACES VS tfvars (IMPORTANT)
+--------------------------------------------------
+
+    Workspaces:
+        • Separate state files
+        • Same code
+
+    tfvars:
+        • Different input values
+        • Same or different environments
+
+Best Practice:
+
+    Use both together:
+        workspace + tfvars
+
+
+--------------------------------------------------
+WHEN TO USE WORKSPACES?
+--------------------------------------------------
+
+    • Small to medium projects
+    • Multiple environments (dev/test/prod)
+    • Same infrastructure pattern
+
+Avoid for:
+
+    • Very complex architectures
+    • Large enterprise setups
+    (use separate backends instead)
+
+
+--------------------------------------------------
+SIMPLE SUMMARY
+--------------------------------------------------
+
+    Workspace = Separate environment with its own state
+
+    Commands:
+
+        list    → terraform workspace list
+        create  → terraform workspace new dev
+        switch  → terraform workspace select dev
+
+    DevOps usage: Simple 
+
+        One code → multiple statefile -->  multiple environments
+		
+		
+		==========
+		
+		
+====================================================================
+TERRAFORM STATE FILE LOCK – SHORT NOTES
+====================================================================
+
+--------------------------------------------------
+WHAT IS TERRAFORM STATE FILE?
+--------------------------------------------------
+
+    Terraform state file (terraform.tfstate)
+    stores the current state of infrastructure.
+
+    It keeps track of:
+        • Resource IDs
+        • Configurations
+        • Mapping between code and real resources
+
+
+--------------------------------------------------
+WHAT IS STATE FILE LOCKING?
+--------------------------------------------------
+
+    State file locking prevents multiple users
+    from modifying the infrastructure at the same time.
+
+    Only ONE person/process can run:
+
+        terraform apply
+		terraform destroy 
+
+    at a time.
+
+
+--------------------------------------------------
+WHY DO WE NEED STATE LOCKING?
+--------------------------------------------------
+
+    Without locking:
+
+        Multiple users run terraform apply
+        at the same time →
+
+            • Conflicts
+            • Resource duplication
+            • State corruption
+            • Infrastructure breakage
+
+    Locking ensures:
+
+        Safe and consistent updates.
+
+
+--------------------------------------------------
+HOW STATE LOCKING WORKS
+--------------------------------------------------
+
+    When you run:
+
+        terraform apply
+
+    Terraform:
+
+        1) Acquires lock
+        2) Performs changes
+        3) Releases lock
+
+    If another user tries:
+
+        They will get error:
+
+            "State is locked by another process"
+
+
+--------------------------------------------------
+WHERE IS LOCK STORED?
+--------------------------------------------------
+
+    Depends on backend:
+
+    Local backend:
+        No proper locking (not safe for teams)
+
+    Remote backends:
+
+        S3 + DynamoDB  → Lock stored in DynamoDB
+        Terraform Cloud → Managed locking
+        Consul → Locking supported
+
+
+--------------------------------------------------
+REAL DEVOPS SETUP (BEST PRACTICE)
+--------------------------------------------------
+
+    Use:
+
+        S3 bucket → Store state file
+        DynamoDB  → Locking mechanism
+
+    Example:
+
+        terraform {
+          backend "s3" {
+            bucket         = "my-terraform-state"
+            key            = "dev/terraform.tfstate"
+            region         = "ap-south-1"
+            dynamodb_table = "terraform-locks"
+          }
+        }
+
+
+--------------------------------------------------
+WHAT HAPPENS IF LOCK FAILS?
+--------------------------------------------------
+
+    Sometimes lock is stuck due to:
+
+        • Crash
+        • Network issue
+
+    Error example:
+
+        Error acquiring the state lock
+
+Solution:
+
+        terraform force-unlock <LOCK_ID>
+
+    Use carefully!
+
+
+--------------------------------------------------
+SIMPLE SUMMARY
+--------------------------------------------------
+
+    State file = Infrastructure tracking file
+
+    Locking =
+        Prevents multiple users from modifying
+        infrastructure at the same time
+
+    Best Practice:
+        Use remote backend + locking (S3 + DynamoDB)
+===============================================================================================
+
+date:  18 MAR 2026
+
+
+
+====================================================================
+TERRAFORM MODULES – CODE REUSABILITY (FOCUS)
+====================================================================
+
+--------------------------------------------------
+WHAT IS A MODULE (IN SIMPLE TERMS)?
+--------------------------------------------------
+
+    A module is a reusable block of Terraform code.
+
+    Instead of writing the same resource code
+    again and again, we write it once
+    and reuse it multiple times.
+
+DRY - DO NOT REPEAT YOURSELF 
+
+--------------------------------------------------
+PROBLEM WITHOUT MODULES
+--------------------------------------------------
+
+    Suppose you need:
+
+        • 3 EC2 instances
+        • 5 EC2 instances
+        • 10 EC2 instances
+
+    Without module:
+
+        You write same EC2 code multiple times ❌
+
+    Issues:
+
+        • Repeated code
+        • Hard to update
+        • Error-prone
+
+
+--------------------------------------------------
+SOLUTION WITH MODULES
+--------------------------------------------------
+
+    Create ONE EC2 module
+
+    Reuse it multiple times with different inputs ✅
+
+
+--------------------------------------------------
+STEP 1: CREATE MODULE
+--------------------------------------------------
+
+Folder structure:
+
+    modules/
+        ec2/
+            main.tf
+            variables.tf
+
+--------------------------------------------------
+modules/ec2/main.tf
+--------------------------------------------------
+
+    resource "aws_instance" "example" {
+        ami           = var.ami
+        instance_type = var.instance_type
+    }
+
+
+--------------------------------------------------
+modules/ec2/variables.tf
+--------------------------------------------------
+
+    variable "ami" {}
+    variable "instance_type" {}
+
+
+--------------------------------------------------
+STEP 2: USE MODULE MULTIPLE TIMES
+--------------------------------------------------
+
+main.tf (root module):
+
+    module "web_server" {
+        source         = "./modules/ec2"
+        ami            = "ami-123"
+        instance_type  = "t2.micro"
+    }
+
+    module "app_server" {
+        source         = "./modules/ec2"
+        ami            = "ami-456"
+        instance_type  = "t3.medium"
+    }
+
+    module "db_server" {
+        source         = "./modules/ec2"
+        ami            = "ami-789"
+        instance_type  = "t3.large"
+    }
+
+
+--------------------------------------------------
+WHAT IS HAPPENING HERE?
+--------------------------------------------------
+
+    Same EC2 code reused 3 times
+
+    Only inputs changed:
+
+        • web → small instance
+        • app → medium instance
+        • db  → large instance
+
+
+
+
+--------------------------------------------------
+REAL EXAMPLE
+--------------------------------------------------
+
+    Security Group Module:
+
+        One module defines:
+            - SSH access
+            - HTTP access
+
+    Use it for:
+
+        • EC2
+        • ALB
+        • Bastion host
+
+    Same code reused everywhere
+
+
+--------------------------------------------------
+BENEFITS OF MODULES (REUSABILITY)
+--------------------------------------------------
+
+    • Write once, use many times
+    • Reduce code duplication
+    • Easy to maintain
+    • Easy to update
+
+    Example:
+
+        Change in module → affects all usages
+
+
+--------------------------------------------------
+ SUMMARY
+--------------------------------------------------
+
+    Module = Reusable code block
+
+    Purpose:
+        Avoid repeating Terraform code
+
+    Key idea:
+
+        Write once → Use many times
+
+==============================================================================================================================
+
+Date: 20 MAR 2026
+
+============================================================
+Terraform Provisioners:
+============================================================
+
+Definition:
+Provisioners are used to execute scripts or commands on a resource
+after it is created (or before it is destroyed).
+They act as a "last-mile" configuration step.
+
+------------------------------------------------------------
+Types of Provisioners:
+------------------------------------------------------------
+1. file        -> Copy files from local machine to resource
+2. remote-exec -> Run commands on remote resource (SSH/WinRM)
+3. local-exec  -> Run commands on local machine
+
+------------------------------------------------------------
+Real-Time Use Case:
+------------------------------------------------------------
+Scenario:
+Launch an AWS EC2 instance and automatically install Nginx / httpd 
+so that the server is ready immediately after creation.
+
+------------------------------------------------------------
+Terraform Configuration Example:
+------------------------------------------------------------
+
+resource "aws_instance" "prod_server" {
+  
+  ami = "ami-0f559c3642608c138"
+  instance_type = "t3.micro"
+  key_name = "madhukiran"
+
+    network_interface {
+        device_index = 0
+        network_interface_id = aws_network_interface.prod_eni.id
+    }
+
+
+  tags = {
+    Name = "Prod-fb-Server"
+  }
+
+provisioner "local-exec" {
+  command = "echo 'this is facebook server IP: ${aws_eip.prod_eip.public_ip}' > fb-server-ip.txt"
+}
+
+connection {
+  type = "ssh"
+  user = "ec2-user"
+  private_key = file("C:/Users/Madhukiran/Desktop/keys/madhukiran.pem")
+  host = aws_eip.prod_eip.public_ip
+}
+
+provisioner "file" {
+  source = "index.html"
+  destination = "/tmp/indx.html"
+}
+
+provisioner "remote-exec" {
+  inline = [
+    "sudo yum install httpd -y",
+    "sudo cp /tmp/indx.html /var/www/html/index.html",
+    "sudo systemctl start httpd", 
+    "sudo systemctl enable httpd",
+  ]
+
+}
+
+}
+
+------------------------------------------------------------
+Execution Flow:
+------------------------------------------------------------
+1. Terraform creates EC2 instance
+2. Establishes SSH connection using key pair
+3. Executes commands on the instance
+4. Nginx/Httpd  is installed and running
+
+------------------------------------------------------------
+Important Notes:
+------------------------------------------------------------
+- Provisioners are NOT recommended for regular use
+- They are not fully idempotent (may cause issues if re-run)
+- Should be used only when no better alternative exists
+
+------------------------------------------------------------
+Preferred Alternatives:
+------------------------------------------------------------
+- user_data / cloud-init scripts
+- Configuration management tools (Ansible, Chef, Puppet)
+
+------------------------------------------------------------
+Summary:
+------------------------------------------------------------
+Provisioners = Post-creation automation
+Useful for quick setup tasks
+Use sparingly in production environments
+============================================================
+
+
+============================================================
+Terraform Provisioners vs AWS User Data 
+============================================================
+
+Definition:
+
+Terraform Provisioners:
+Provisioners execute scripts or commands AFTER a resource is created.
+They connect to the resource (SSH/WinRM) and run commands.
+
+AWS User Data:
+User data is a script that runs DURING the instance boot process.
+It is passed at launch time and executed automatically by the OS.
+
+------------------------------------------------------------
+Key Differences:
+------------------------------------------------------------
+
+1. Execution Time:
+Provisioners  -> After resource creation
+User Data     -> During instance startup (boot time)
+
+2. Dependency:
+Provisioners  -> Requires network access (SSH/WinRM)
+User Data     -> No external connection required
+
+3. Reliability:
+Provisioners  -> Less reliable (can fail if connection fails)
+User Data     -> More reliable (runs internally on instance)
+
+4. Idempotency:
+Provisioners  -> Not fully idempotent
+User Data     -> Can be made idempotent with scripting
+
+5. Terraform Role:
+Provisioners  -> Last resort feature in Terraform
+User Data     -> Preferred method for initialization
+
+------------------------------------------------------------
+Real-Time Example Comparison:
+------------------------------------------------------------
+
+Using Provisioner:
+
+resource "aws_instance" "example1" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("key.pem")
+    host        = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install nginx -y",
+      "sudo systemctl start nginx"
+    ]
+  }
+}
+
+------------------------------------------------------------
+
+Using User Data:
+
+resource "aws_instance" "example2" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+
+  user_data = <<-EOF
+              #!/bin/bash
+              yum install nginx -y
+              systemctl start nginx
+              systemctl enable nginx
+              EOF
+}
+
+------------------------------------------------------------
+Execution Flow Difference:
+------------------------------------------------------------
+
+Provisioner Flow:
+1. Terraform creates EC2
+2. Waits for instance to be ready
+3. Connects via SSH
+4. Executes commands
+
+User Data Flow:
+1. Terraform creates EC2
+2. Instance boots
+3. Script runs automatically inside instance
+4. No external connection needed
+
+------------------------------------------------------------
+Best Practice:
+------------------------------------------------------------
+
+Use User Data:
+- For installing packages
+- For bootstrapping instances
+- For production environments
+
+Use Provisioners:
+- Only when user_data is not sufficient
+- For edge cases or quick fixes
+
+------------------------------------------------------------
+Summary:
+------------------------------------------------------------
+
+Provisioners = External, post-creation configuration
+User Data    = Internal, boot-time initialization
+
+User Data is preferred over Provisioners in most real-world scenarios
+========================================================================================================================
+Terraform Provisioners vs AWS User Data 
+============================================================
+
+Definition:
+
+Terraform Provisioners:
+Provisioners execute scripts or commands AFTER a resource is created.
+They connect to the resource (SSH/WinRM) and run commands.
+
+AWS User Data:
+User data is a script that runs DURING the instance boot process.
+It is passed at launch time and executed automatically by the OS.
+
+------------------------------------------------------------
+Key Differences:
+------------------------------------------------------------
+
+1. Execution Time:
+Provisioners  -> After resource creation
+User Data     -> During instance startup (boot time)
+
+2. Dependency:
+Provisioners  -> Requires network access (SSH/WinRM)
+User Data     -> No external connection required
+
+3. Reliability:
+Provisioners  -> Less reliable (can fail if connection fails)
+User Data     -> More reliable (runs internally on instance)
+
+4. Idempotency:
+Provisioners  -> Not fully idempotent
+User Data     -> Can be made idempotent with scripting
+
+5. Terraform Role:
+Provisioners  -> Last resort feature in Terraform
+User Data     -> Preferred method for initialization
+
+------------------------------------------------------------
+Real-Time Example Comparison:
+------------------------------------------------------------
+
+Using Provisioner:
+
+resource "aws_instance" "example1" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("key.pem")
+    host        = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install nginx -y",
+      "sudo systemctl start nginx"
+    ]
+  }
+}
+
+------------------------------------------------------------
+
+Using User Data:
+
+resource "aws_instance" "example2" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+
+  user_data = <<-EOF
+              #!/bin/bash
+              yum install nginx -y
+              systemctl start nginx
+              systemctl enable nginx
+              EOF
+}
+
+------------------------------------------------------------
+Execution Flow Difference:
+------------------------------------------------------------
+
+Provisioner Flow:
+1. Terraform creates EC2
+2. Waits for instance to be ready
+3. Connects via SSH
+4. Executes commands
+
+User Data Flow:
+1. Terraform creates EC2
+2. Instance boots
+3. Script runs automatically inside instance
+4. No external connection needed
+
+------------------------------------------------------------
+Best Practice:
+------------------------------------------------------------
+
+Use User Data:
+- For installing packages
+- For bootstrapping instances
+- For production environments
+
+Use Provisioners:
+- Only when user_data is not sufficient
+- For edge cases or quick fixes
+
+------------------------------------------------------------
+Summary:
+------------------------------------------------------------
+
+Provisioners = External, post-creation configuration
+User Data    = Internal, boot-time initialization
+
+User Data is preferred over Provisioners in most real-world scenarios
+===========================================================
+
+
+
+=
+DATE: 26 MAR 2026
+
+
+
+
+====================================================================
+TERRAFORM REMOTE BACKEND (S3 – LATEST WITH NATIVE LOCKING)
+====================================================================
+
+--------------------------------------------------
+WHAT IS TERRAFORM BACKEND?
+--------------------------------------------------
+
+    Backend defines where Terraform stores
+    its state file (terraform.tfstate).
+
+    Default:
+        Local file (not safe for teams)
+
+    Remote Backend:
+        Stores state in remote location like:
+            • S3
+            • Terraform Cloud
+            • Azure blob Storage
+			. Gcs (goolge cloud storage) 
+
+
+--------------------------------------------------
+WHAT IS REMOTE BACKEND?
+--------------------------------------------------
+
+    Remote backend stores Terraform state
+    in a shared location.
+
+    Benefits:
+
+        • Team collaboration
+        • Centralized state
+        • Backup & versioning
+        • Secure access
+
+
+--------------------------------------------------
+WHY REMOTE BACKEND IS REQUIRED?
+--------------------------------------------------
+
+    Problems with local state:
+
+        • No sharing
+        • Risk of deletion
+        • No locking
+        • Conflicts in team
+
+    Remote backend solves:
+
+        • Shared access
+        • Safe updates
+        • Locking mechanism
+
+
+--------------------------------------------------
+STATE LOCKING (IMPORTANT)
+--------------------------------------------------
+
+    State locking prevents multiple users
+    from modifying infrastructure at same time.
+
+    Example:
+
+        User1 → terraform apply
+        User2 → blocked until User1 finishes
+
+
+--------------------------------------------------
+OLD APPROACH (DEPRECATED)
+--------------------------------------------------
+
+    S3 + DynamoDB
+
+    S3:
+        Stores state file
+
+    DynamoDB:
+        Handles locking
+
+Example (OLD):
+
+    terraform {
+      backend "s3" {
+        bucket         = "my-tf-state"
+        key            = "dev/terraform.tfstate"
+        region         = "ap-south-1"
+        dynamodb_table = "terraform-locks"
+      }
+    }
+
+    NOTE:
+        DynamoDB locking is now DEPRECATED.
+
+
+--------------------------------------------------
+NEW APPROACH (TERRAFORM 1.10+)
+--------------------------------------------------
+
+    S3 supports native locking.
+
+    No need for DynamoDB.
+
+    Terraform uses:
+        • Lock file (.tflock)
+        • S3 conditional writes
+
+
+--------------------------------------------------
+NEW BACKEND CONFIGURATION (RECOMMENDED)
+--------------------------------------------------
+
+    terraform {
+      backend "s3" {
+        bucket       = "my-tf-state"
+        key          = "dev/terraform.tfstate"
+        region       = "ap-south-1"
+        use_lockfile = true
+      }
+    }
+
+
+--------------------------------------------------
+WHAT IS use_lockfile?
+--------------------------------------------------
+
+    Enables native S3 locking.
+
+    When terraform apply runs:
+
+        • Lock file created in S3
+        • Other users blocked
+        • Lock released after completion
+
+
+--------------------------------------------------
+S3 SETUP STEPS
+--------------------------------------------------
+
+    Step 1: Create S3 bucket
+
+        Name: my-tf-state
+
+    Step 2: Enable versioning (IMPORTANT)
+
+        Protects state file history
+
+    Step 3: Configure backend in Terraform
+
+
+--------------------------------------------------
+WORKFLOW
+--------------------------------------------------
+
+    terraform init
+
+        • Configures backend
+        • Connects to S3
+        • Prepares locking
+
+    terraform plan
+
+        • Reads remote state
+
+    terraform apply
+
+        • Acquires lock
+        • Updates infrastructure
+        • Releases lock
+
+
+--------------------------------------------------
+REAL DEVOPS USE CASE
+--------------------------------------------------
+
+    Team of 5 engineers working on same infra.
+
+    Without remote backend:
+
+        ❌ Conflicts
+        ❌ Overwrites
+
+    With S3 backend:
+
+        ✅ Shared state
+        ✅ Safe updates
+        ✅ Locking prevents conflicts
+
+
+--------------------------------------------------
+IMPORTANT NOTES
+--------------------------------------------------
+
+    • DynamoDB locking is deprecated
+    • Still works but not recommended
+    • S3 native locking is future standard
+    • Always enable versioning in S3
+
+
+--------------------------------------------------
+INTERVIEW SUMMARY
+--------------------------------------------------
+
+    Backend:
+        Where Terraform stores state
+
+    Remote Backend:
+        Shared storage (S3)
+
+    Old:
+        S3 + DynamoDB
+
+    New:
+        S3 + use_lockfile
+
+    Locking:
+        Prevents concurrent changes
+
+
+--------------------------------------------------
+FINAL SUMMARY
+--------------------------------------------------
+
+    S3 → State storage
+    S3 → Locking (new)
+
+    Best Practice:
+        Use S3 with use_lockfile enabled
+
+====================================================================
+TERRAFORM REMOTE BACKEND (S3 – LATEST WITH NATIVE LOCKING)
+====================================================================
+
+--------------------------------------------------
+WHAT IS TERRAFORM BACKEND?
+--------------------------------------------------
+
+    Backend defines where Terraform stores
+    its state file (terraform.tfstate).
+
+    Default:
+        Local file (not safe for teams)
+
+    Remote Backend:
+        Stores state in remote location like:
+            • S3
+            • Terraform Cloud
+            • Azure blob Storage
+			. Gcs (goolge cloud storage) 
+
+
+--------------------------------------------------
+WHAT IS REMOTE BACKEND?
+--------------------------------------------------
+
+    Remote backend stores Terraform state
+    in a shared location.
+
+    Benefits:
+
+        • Team collaboration
+        • Centralized state
+        • Backup & versioning
+        • Secure access
+
+
+--------------------------------------------------
+WHY REMOTE BACKEND IS REQUIRED?
+--------------------------------------------------
+
+    Problems with local state:
+
+        • No sharing
+        • Risk of deletion
+        • No locking
+        • Conflicts in team
+
+    Remote backend solves:
+
+        • Shared access
+        • Safe updates
+        • Locking mechanism
+
+
+--------------------------------------------------
+STATE LOCKING (IMPORTANT)
+--------------------------------------------------
+
+    State locking prevents multiple users
+    from modifying infrastructure at same time.
+
+    Example:
+
+        User1 → terraform apply
+        User2 → blocked until User1 finishes
+
+
+--------------------------------------------------
+OLD APPROACH (DEPRECATED)
+--------------------------------------------------
+
+    S3 + DynamoDB
+
+    S3:
+        Stores state file
+
+    DynamoDB:
+        Handles locking
+
+Example (OLD):
+
+    terraform {
+      backend "s3" {
+        bucket         = "my-tf-state"
+        key            = "dev/terraform.tfstate"
+        region         = "ap-south-1"
+        dynamodb_table = "terraform-locks"
+      }
+    }
+
+    NOTE:
+        DynamoDB locking is now DEPRECATED.
+
+
+--------------------------------------------------
+NEW APPROACH (TERRAFORM 1.10+)
+--------------------------------------------------
+
+    S3 supports native locking.
+
+    No need for DynamoDB.
+
+    Terraform uses:
+        • Lock file (.tflock)
+        • S3 conditional writes
+
+
+--------------------------------------------------
+NEW BACKEND CONFIGURATION (RECOMMENDED)
+--------------------------------------------------
+
+    terraform {
+      backend "s3" {
+        bucket       = "my-tf-state"
+        key          = "dev/terraform.tfstate"
+        region       = "ap-south-1"
+        use_lockfile = true
+      }
+    }
+
+
+--------------------------------------------------
+WHAT IS use_lockfile?
+--------------------------------------------------
+
+    Enables native S3 locking.
+
+    When terraform apply runs:
+
+        • Lock file created in S3
+        • Other users blocked
+        • Lock released after completion
+
+
+--------------------------------------------------
+S3 SETUP STEPS
+--------------------------------------------------
+
+    Step 1: Create S3 bucket
+
+        Name: my-tf-state
+
+    Step 2: Enable versioning (IMPORTANT)
+
+        Protects state file history
+
+    Step 3: Configure backend in Terraform
+
+
+--------------------------------------------------
+WORKFLOW
+--------------------------------------------------
+
+    terraform init
+
+        • Configures backend
+        • Connects to S3
+        • Prepares locking
+
+    terraform plan
+
+        • Reads remote state
+
+    terraform apply
+
+        • Acquires lock
+        • Updates infrastructure
+        • Releases lock
+
+
+--------------------------------------------------
+REAL DEVOPS USE CASE
+--------------------------------------------------
+
+    Team of 5 engineers working on same infra.
+
+    Without remote backend:
+
+        ❌ Conflicts
+        ❌ Overwrites
+
+    With S3 backend:
+
+        ✅ Shared state
+        ✅ Safe updates
+        ✅ Locking prevents conflicts
+
+
+--------------------------------------------------
+IMPORTANT NOTES
+--------------------------------------------------
+
+    • DynamoDB locking is deprecated
+    • Still works but not recommended
+    • S3 native locking is future standard
+    • Always enable versioning in S3
+
+
+--------------------------------------------------
+INTERVIEW SUMMARY
+--------------------------------------------------
+
+    Backend:
+        Where Terraform stores state
+
+    Remote Backend:
+        Shared storage (S3)
+
+    Old:
+        S3 + DynamoDB
+
+    New:
+        S3 + use_lockfile
+
+    Locking:
+        Prevents concurrent changes
+
+
+--------------------------------------------------
+FINAL SUMMARY
+--------------------------------------------------
+
+    S3 → State storage
+    S3 → Locking (new)
+
+    Best Practice:
+        Use S3 with use_lockfile enabled
+===============================================================================
+
+
+DATE: 27 MAR 2026
+
+# Terraform Import
+
+## 🔹 What is Terraform Import?
+
+Terraform import is a command used to bring **existing infrastructure (created outside Terraform)** under Terraform management.
+
+👉 It allows Terraform to **track and manage resources** that were not originally created using Terraform.
+
+---
+
+## 🔹 Why is it Needed?
+
+* Infrastructure already exists (manually created or via other tools)
+* You want to manage it using Terraform going forward
+* Avoid recreating resources (which may cause downtime or data loss)
+
+---
+
+## 🔹 Syntax
+
+```
+terraform import <resource_type>.<resource_name> <resource_id>
+```
+
+Example:
+
+```
+terraform import <aws_resource>.<resource_ref> <resource-name/id>
+terraform import aws_instance.my_ec2 i-1234567890abcdef0
+```
+
+---
+
+## 🔹 Key Points
+
+* Import **does NOT create configuration files**
+* You must manually write the `.tf` code
+* It only updates the **Terraform state file**
+* Resource must already exist in the provider (AWS, Azure, etc.)
+
+---
+
+## 🔹 Real-Time Scenario 🌍
+
+### Situation:
+
+A company has an existing AWS EC2 instance created manually via AWS Console.
+
+Now they want to:
+
+* Manage it using Terraform
+* Apply updates (tags, security groups, etc.)
+
+---
+
+### Step-by-Step Process:
+
+1. **Write Terraform Configuration**
+
+```
+resource "aws_instance" "my_ec2" {
+  # minimal config (can refine later)
+}
+```
+
+2. **Run Import Command**
+
+```
+terraform import aws_instance.my_ec2 i-0abcd1234efgh5678
+```
+
+3. **Verify State**
+
+```
+terraform state list
+```
+
+4. **Run Plan**
+
+```
+terraform plan
+```
+
+👉 Terraform will show differences between actual resource and config
+
+5. **Update Configuration**
+
+* Add missing attributes (AMI, instance type, etc.)
+* Make config match real infrastructure
+
+---
+
+## 🔹 Important Notes ⚠️
+
+* Import is **one-time action**
+* Incorrect config may lead to unwanted changes during `terraform apply`
+* Always run `terraform plan` after import
+
+---
+
+## 🔹 Common Use Cases
+
+* Migrating manual infra to Terraform
+* Adopting legacy systems
+* Disaster recovery scenarios
+* Standardizing infrastructure management
+
+---
+
+## 🔹 Summary 🧠
+
+* Import = Bring existing resources into Terraform state
+* Does NOT generate code automatically
+* Requires careful configuration alignment
+* Helps in transitioning to Infrastructure as Code (IaC)
+
+---
+
+
+
+
+=============================================================================================================================================================================================
+DATE : 28 
+
+TERRAFORM VAULT 
+(seperate notes in github ) 
+
+Terraformvault_Ramani_27Mar2026.md
+=============================================================
+
+DATE: 30 MAR 26  
+(REAL TIME 3 TIER PROJECT ) 
+
+TERRAFORM VARIABLE DATA TYPE CONSTRAINTS
+
+
+---
+
+1. WHAT ARE DATA TYPE CONSTRAINTS?
+
+Data type constraints define what kind of value a variable can accept.
+
+
+         String → only text
+         Number → only numbers
+         List → multiple values
+         Object → structured data
+		 map --> key value pair 
+        
+Purpose:
+
+         Avoid mistakes
+         Make code predictable
+         Improve readability
+
+---
+
+2. STRING (text)
+
+Definition:
+A string is just text inside quotes.
+
+
+variable "region" {
+   type = string
+}
+
+Input:
+region = "us-east-1"
+
+Real-time use:
+
+* AWS region
+* Resource names
+* Environment (dev, prod)
+
+============================================================
+
+3. NUMBER
+
+Definition:
+Used for numeric values.
+
+Example:
+variable "instance_count" {
+type = number
+}
+
+Input:
+instance_count = 3
+
+Real-time use:
+
+* Number of servers
+* Disk size (GB)
+* Autoscaling limits
+
+---
+
+4. BOOL (true/false)
+
+Definition:
+Boolean values: true or false
+
+Example:
+variable "enable_public_ip" {
+type = bool
+}
+
+Input:
+enable_public_ip = true
+
+Real-time use:
+
+* Enable or disable public IP
+* Turn features ON or OFF
+
+---
+
+5. LIST (ordered values)
+
+Definition:
+A list holds multiple values in order.
+
+Example:
+
+variable "subnet_cidrs" {
+      type = list(string)
+               }
+
+Input:
+subnet_cidrs = [
+         "10.0.1.0/24",
+         "10.0.2.0/24"
+               ]
+
+Real-time use:
+
+* Subnets
+* Availability zones
+* Security group IDs
+
+---
+
+6. MAP (key-value pairs)
+
+Definition:
+Stores data as key = value
+
+Example:
+
+variable "tags" {
+type = map(string)
+}
+
+Input:
+
+tags = {
+Name = "web-server"
+Env  = "dev"
+owner = "madhu"
+}
+
+Real-time use:
+
+* Resource tagging in AWS
+* Labels and metadata
+
+---
+
+7. OBJECT (structured data)
+
+Definition:
+An object groups multiple fields together.
+
+Example:
+
+variable "server_config" {
+          type = object({
+                     name  = string
+                     size  = string
+                     count = number
+                       })
+          }
+
+Input:
+server_config = {
+name  = "web"
+size  = "t2.micro"
+count = 2
+}
+
+Real-time use:
+
+* Server configuration
+* Database settings
+* Application configs
+
+---
+
+8. LIST OF OBJECTS (IMPORTANT)
+
+Definition:
+A list containing multiple objects.
+
+Example:
+
+variable "public_subnets" {
+  description = "List of public subnets with CIDR and Availability Zone"
+  type = list(object({
+    cidr = string
+    az   = string
+  }))
+
+
+Input:
+public_subnets = [
+{ cidr = "10.0.1.0/24", az = "us-east-1a" },
+{ cidr = "10.0.2.0/24", az = "us-east-1b" }
+]
+
+Real-time use:
+
+* Multiple subnets in multiple availability zones 
+* Multiple servers
+* Multiple environments
+
+---
+
+9. WHY TYPE CONSTRAINTS ARE IMPORTANT
+
+10. Prevent errors
+    Example:
+    instance_count = "three"  (wrong type)
+
+11. Validate structure
+    Example:
+    public_subnets = "10.0.1.0/24" (should be list)
+
+12. Improve readability
+
+13. Help teamwork (others understand input format easily)
+
+---
+
+10. SIMPLE ANALOGY
+
+## Type           → Real-life example
+
+string         → Name
+number         → Age
+bool           → Yes or No
+list           → Shopping list
+map            → Dictionary (word → meaning)
+object         → Form with fields
+list(object)   → Multiple forms
+
+---
+
+11. FINAL SUMMARY
+
+* Terraform variables need correct data types
+* Types ensure correct input format
+* Common types: string, number, bool, list, map, object
+* Most used in real projects: list(object)
+
+================
+
+
+
+git clone <urlpath?
