@@ -1,0 +1,2093 @@
+
+AWS LINUX
+
+============================
+ON-PREMISES : What is On-Premises?
+============================
+
+On-premises means:
+You own and manage everything yourself (your own datacenter) 
+
+This includes:
+- Servers (big computers)
+- Storage
+- Networking equipment
+- Power
+- Cooling
+- Security
+- IT staff to maintain it
+
+
+============================
+CLOUD : What is Cloud?
+============================
+
+Cloud means:
+Using someone else’s computers (servers) over the internet
+instead of owning and managing your own.
+
+
+============================
+EXAMPLE: Running a Website
+============================
+
+ON-PREMISES:
+
+- Buy a server
+- Install OS and software
+- Set up networking
+- Handle power & cooling
+- Fix hardware issues
+- Upgrade when traffic grows
+- Limited storage - External hard drive or  server
+- Limited space
+- If it breaks → data loss risk
+
+Result:
+- Takes time
+- High cost
+- Requires expertise
+
+
+CLOUD:
+
+- Create an account
+- Click "Create Server"
+- Choose server size
+- Pay per hour or usage
+- Scale up or down anytime AS PER REQUIREMENT 
+
+Result:
+- Fast
+- Flexible
+- Beginner-friendly
+
+
+============================
+KEY BENEFITS OF CLOUD
+(Why Cloud is Popular)
+============================
+
+- No hardware to buy
+- Pay only for what you use (Ondemand )
+- Easy to scale resources
+- High availability
+- High Scalability
+- Faster to start
+- Global access from anywhere
+
+
+============================
+WHEN ON-PREMISES IS STILL USED
+============================
+
+Some companies prefer on-premises when:
+
+- Strict data security laws exist
+- Internet is not reliable
+- Legacy systems are in use
+- Full control over systems is required
+
+=========================================================================
+LINUX BASICS FOR CLOUD
+
+=====================================
+1) WHY LINUX? WHY NOT WINDOWS?
+=====================================
+
+Simple Answer:
+Cloud runs mostly on Linux, not Windows.
+
+
+Why Linux?
+
+- Free (open source) 
+- Stable (Runs for years)
+- Lightweight
+- Secure & Reliable 
+- Highly customizable
+- Perfect for servers
+
+Why not Windows?
+
+- Windows is mainly designed for desktop users
+- Heavier OS
+- Paid license
+- Less suitable for large-scale servers
+
+
+=====================================
+LINUX vs WINDOWS 
+=====================================
+
+Feature           Linux                     Windows
+------------------------------------------------------------
+Cost              Free (Open-source)        Paid license
+Performance       Fast & lightweight        Heavy
+Stability         Runs for years             Needs restarts
+Security          Very secure               More virus-prone
+Automation        Excellent (CLI-based)     Limited
+Server usage      Very high                 Less
+Cloud support     Default choice             Secondary
+
+
+=====================================
+UNIX (ORIGINAL)
+=====================================
+
+- Old operating system
+- Created in the 1970s
+- Expensive
+- Mostly used in big enterprises
+- Examples:
+  - AIX
+  - Solaris
+  - HP-UX
+
+
+=====================================
+LINUX (INSPIRED BY UNIX)
+=====================================
+
+- Open-source
+- Free
+- Created in 1991
+- Community-driven
+- Runs everywhere:
+  - Cloud
+  - Mobile
+  - Servers
+
+
+=====================================
+UNIX vs LINUX 
+=====================================
+
+UNIX                     Linux
+------------------------------------------------
+Proprietary              Open-source
+Paid                     Free
+Limited vendors          Huge community
+Less flexible            Highly customizable
+Legacy systems           Used everywhere today
+
+
+=====================================
+FEW IMPORTANT FACTS
+=====================================
+
+- Android is based on Linux
+- AWS runs mostly on Linux
+- Google runs on Linux
+- Facebook runs on Linux
+- Around 90% of internet servers run Linux
+- Linux is the backbone of Cloud.
+
+
+
+MAJOR LINUX DISTRIBUTION FAMILIES 
+
+
+RHEL 
+UBUNTU
+AMAZON LINUX 
+DEBIAN
+
+
+
+==================================================
+
+LINUX ARCHITECTURE:
+
+
+
+==================================================
+AWS FREE TIER 
+
+
+AWS Free Tier allows new users to try AWS services
+without paying immediately.
+
+It is mainly used for:
+- Learning AWS
+- Practice
+- Small experiments
+- Beginners in Cloud
+
+
+========================================
+AWS FREE TIER – CURRENT USAGE MODEL
+(NEW ACCOUNTS)
+========================================
+
+For new AWS accounts:
+
+- AWS offers a Free Plan with credits
+- You can get up to $200 AWS credits
+  - $100 at signup
+  - Up to $100 by completing learning activities
+
+- Valid for:
+  - 6 months
+  - OR until credits are used (whichever comes first)
+
+- No charges unless you upgrade to Paid Plan
+
+
+========================================
+IS IT FREE FOR 1 YEAR OR 6 MONTHS?
+========================================
+
+- Older AWS accounts (created earlier):
+  - Had 12 months Free Tier for many services
+
+- New AWS accounts:
+  - Mostly follow 6-month Free Plan with credits
+
+Note:
+- AWS model may change over time
+- Always check usage limits in AWS console
+
+
+========================================
+ALWAYS FREE SERVICES
+(NO EXPIRY – WITH LIMITS)
+========================================
+
+Some services are free every month
+within certain limits, even after credits end.
+
+Examples:
+- AWS Lambda
+  - 1 million free requests per month
+- Amazon S3
+  - Limited free storage
+- Amazon DynamoDB
+  - Free storage and read/write capacity
+
+(Usage limits apply)
+
+
+========================================
+IMPORTANT POINTS TO REMEMBER
+========================================
+
+- Credit card is required to create AWS account
+- AWS follows pay-as-you-use model
+- If you exceed free limits → you will be charged
+- Always monitor billing dashboard
+
+
+========================================
+FINAL SUMMARY
+========================================
+
+AWS Free Tier is a starter pack for beginners.
+
+- New users get free credits (valid ~6 months)
+- Some services are always free within limits
+- Best way to learn AWS hands-on
+- Be careful with usage to avoid charges
+
+
+==============
+======================================================
+
+DATE: 19 DEC 25
+
+
+linux :
+
+clear --- ctrl +L
+
+whoami
+
+hostname 
+sudo su - 
+hostnamectl set-hostname linuxsrv
+ 
+pwd -- C:\Users\SK NAGUL\Desktop\test\dir1
+
+
+touch file1 file2 file3
+
+mkdir dir1 dir2 dir3 
+
+ls
+ls -lrth
+ll
+ls -la
+
+rm -rf fname/dirname 
+
+cd dirname
+
+cd ..
+
+cat fname 
+
+yum install <pkgname>
+
+history
+
+[root@linuxsrv ~]# history
+    1  hostname
+    2  clear
+    3  pwd
+    4  ls
+    5  ll
+    6  touch file1 file2 file3
+    7  ls
+    8  ll
+    9  mkdir dir1 dir2 dir3
+   10  ll
+   11  clear
+   12  ls -lrth
+   13  ls -la
+   14  ll
+   15  rm -rf file2
+   16  ll
+   17  rm -rf  dir2/
+   18  ll
+   19  ls
+   20  ll
+   21  cd dir1
+   22  pwd
+   23  ll
+   24  touch chiru naga bala venky
+   25  ll
+   26  mkdir pavan
+   27  ll
+   28  cd pavan/
+   29  ll
+   30  pwd
+   31  cd ..
+   32  pwd
+   33  cd ..
+   34  ls
+   35  ll
+   36  pwd
+   37  L
+   38  ll
+   39  vim file1
+   40  cat file
+   41  cat file1
+   42  git
+   43  yum install git
+   44  git --version
+   45  java
+   46  yum install java -y
+   47  java --version
+   48  history
+   
+   ==========================================================
+   
+   
+   DATE: 22 DEC 25
+   
+   root dir --> / 
+
+Filesystem Hierarchy Standard (FHS):
+ 
+ 
+The Filesystem Hierarchy Standard (FHS) is a set of guidelines that define the structure and organization of directories and files on Unix-like operating systems, including Linux. It aims to ensure consistency and compatibility between different distributions of Linux, making it easier for software developers, administrators, and users to navigate and understand the file system. Here are the key components of the FHS:
+
+Root Directory (/)
+/bin: Essential command binaries that are required for system operation (e.g., ls, cp, mv).
+
+/boot: Files needed for the boot process, including boot loader configuration files and kernels.
+
+/dev: Device files representing hardware devices attached to the system (e.g., /dev/sda for the first SATA drive).
+
+/etc: Configuration files for the system and installed applications (e.g., /etc/passwd for user information).
+
+/home: Home directories for regular users (e.g., /home/ec2-user).
+
+/lib: Shared libraries needed by programs in /bin and /sbin.
+
+/media: Mount points for removable media (e.g., USB drives).
+
+/mnt: Mount points for temporary mounted filesystems.
+
+/opt: Optional software packages that are not part of the operating system distribution.
+
+/sbin: System binaries essential for system administration, typically used by the root user.
+
+/srv: Data for services provided by the system (e.g., web server data).
+
+/tmp: Temporary files that may be deleted between reboots.
+
+/usr: Secondary hierarchy for read-only user data; contains the majority of user utilities and applications.
+
+/var: Variable data files, such as logs, spool files, and temporary files that persist between reboots.
+
+---------------------
+
+root --> /
+ll
+/bin – binary or executable programs.
+ /sbin – binary executable programs for an administrator.
+/etc – system configuration files.
+/home – home directory. It is the default current directory.
+/root - home directory of root user 
+/opt – optional or third-party software.
+/tmp – temporary space, typically cleared on reboot.
+/usr – User related programs.
+/var – log files.
+
+================================
+
+nested dir 
+
+mkdir -p a/b/c/d/e
+
+
+cp  -rp src.path   dest.path
+
+
+absolute path 
+relative path 
+
+
+mv src.path dest
+
+mv oldname newname
+=========================
+[root@linuxserver opt]# history
+    1  whoami
+    2  hostnamectl set-hostname linuxserver
+    3  exit
+    4  pwd
+    5  cd /
+    6  pwd
+    7  ll
+    8  ls
+    9  ll
+   10  ll bin/
+   11  ll
+   12  ll sbin/
+   13  ll
+   14  ll /home/
+   15  exit
+   16  pwd
+   17  cd /opt/
+   18  pwd
+   19  ll
+   20  rm -rf aws/
+   21  ll
+   22  touch file1 file2
+   23  mkdir dir1 dir2
+   24  ll
+   25  cd dir2
+   26  ll
+   27  touch java python
+   28  ll
+   29  mkdir chiru bala naga venky
+   30  ll
+   31  cd chiru/
+   32  pwd
+   33  ll
+   34  touch pavan nagababu
+   35  pwd
+   36  cd ..
+   37  pwd
+   38  cd ..
+   39  ll
+   40  yum install tree
+   41  yum install tree -y
+   42  ll
+   43  tree
+   44  rm -rf file2
+   45  tree
+   46  ll
+   47  clear
+   48  tree
+   49  mkdir -p dir1/a/b/c/d/e
+   50  ll
+   51  tree
+   52  touch dir1/a/b/maheshbabau
+   53  tree
+   54  mkdir /opt/dir2/naga/akhil
+   55  tree
+   56  cp -rp dir2/java dir1/a/b/c/d/java
+   57  tree
+   58  cp -rp /opt/dir2/python  /opt/dir1/a/python
+   59  tree
+   60  history
+   61  ll
+   62  tree
+   63  cd dir1/a/b/
+   64  ll
+   65  pwd
+   66  cd dir2
+   67  ll
+   68  pwd
+   69  cd ../../../dir2/
+   70  ll
+   71  cd /opt/dir1/a/b
+   72  cd /opt/dir2
+   73  ll
+   74  cd /opt/
+   75  tree
+   76  mv /opt/file1 /opt/dir1/a/file1
+   77  tree
+   78  mv dir2/java dir1/java
+   79  ll
+   80  tree
+   81  ll
+   82  mv dir1 devops
+   83  ll
+   84  touch madhu
+   85  ll
+   86  mv madhu kiran
+   87  ll
+   88  histroy
+
+
+
+
+========================
+
+DATE : 23 DEC 25:
+
+
+useradd uname 
+passwd uname
+
+su - uname
+
+userdel -r uname 
+
+user-home :   /home/uname
+
+cat /etc/passwd
+
+usermod -c "DevOpsUser" madhu
+
+============================================
+cat /etc/passwd 
+tail -n /etc/passwd
+tail -100f /etc/passwd
+head -n /etc/passwd
+more fname
+-----------------------------------
+
+touch fname 
+
+echo "WELCOME TO MINDCIRCUIT devops" > mcfile
+echo "be ready to work hard " >> mcfile
+--------
+
+editor: vi / vim / NANO
+
+
+vim fname 
+
+esc -- i    < insert mode > 
+
+   ----- data ----
+   ----- data ----
+   ----- data ----
+esc : w
+
+esc : q
+
+esc : wq!
+
+=================
+
+LINUX ---> VIM / NANO 
+VI/VIM EDITOR:
+
+gg - TOP LINE
+G - Ground 
+yy -- copy 
+n-yy - 
+p - paste 
+
+dd - delete a line 
+n-dd 
+
+u - undo 
+dw - delete word 
+
+----
+set nu
+set nonu 
+-------
+/madhu  (to search) 
+/touch
+/useradd
+
+n --> next 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+useradd madhu 
+ 
+
+===================================
+
+cat /etc/passwd
+
+tail -n /etc/passwd
+
+head -n <fname>
+
+more fname
+
+==================
+
+wc  /etc/passwd
+
+wc -l /etc/passwd
+
+wc  -w /etc/passwd
+
+wc  -c /etc/passwd
+
+=================================
+
+yum install java 
+
+
+===============================================
+
+
+
+==================================================
+
+
+=============================================
+
+diff file1 file2
+sdiff file1 file2
+==============
+
+
+touch 
+
+vim 
+
+create a file using touch , vim , echo 
+
+echo " docker k8s terraform jenkins " > file2  ( overwrite) 
+echo " aws linux git github " >> file2  ( append) 
+
+
+========================
+
+uptime 
+
+top 
+
+lscpu 
+
+free 
+free -m 
+free -g 
+
+==================================
+
+wget <link> 
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.106/bin/apache-tomcat-9.0.106.zip
+
+=================================
+
+zip 
+
+unzip apache-tomcat-9.0.106.zip
+
+zip -r name.zip <folder> 
+
+
+====================
+
+tar.gz
+
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.106/bin/apache-tomcat-9.0.106.tar.gz
+
+
+tar -xvf apache-tomcat-9.0.106.tar.gz
+
+tar -cvf name.tar.gz <folder> 
+
+===================================
+===================================
+networking commands :
+
+PING 
+---------------------------------
+TELNET 
+
+Telnet is a network protocol and command-line tool used to connect to remote systems or devices over TCP. It lets you manually open a TCP connection to a specific port on a remote host.
+
+   telnet www.google.com 443
+    telnet www.mindcircuit.in 443
+    telnet 100.26.144.255 8080
+   telnet 100.26.144.255 443
+
+----------------------------------------------------------
+
+DATE: 26 DEC 25
+
+
+
+NETSTAT 
+
+The netstat command is a networking tool used to display network connections, routing tables, interface statistics, and more.
+  netstat - an 
+
+
+  
+----------------------------------------------------------
+GREP:
+
+grep -i "madhu" linuxfile
+
+grep -iR "madhu"
+
+----------------------------------------------------------
+ps --> running processes on a system. It provides a snapshot of the currently active processes, including details like process IDs (PIDs), memory usage, CPU time, and more.
+
+ps -ef 
+Shows processes for all users, not just the current session.
+
+
+ps -ef | grep tomcat 
+
+
+kill -9 pid 
+
+
+----------------------------------------------------------
+
+find / -name <fname/dirname> 
+
+find / -name docker -type f
+find / -name docker -type 
+
+========================================================
+
+sed command --> sed 's/madhu/batch17/' test > test2
+
+Replaces occurrences of a pattern with a specified replacement.
+Syntax: s/pattern/replacement/flags
+
+sed 's/madhu/kiran/' input.txt     # Replace first occurrence of 'madhu' with 'madhumadhu' in each line
+sed 's/madhu/kiran/g' input.txt    # Replace all occurrences of 'madhu' with 'madhumadhu' in each line
+sed 's/madhu/kiran/2' input.txt    # Replace the second occurrence of ''madhu' with 'madhumadhu' in each line
+
+
+sed 's/userstanga/madhustanga/' jenkins
+sed 's/userstanga/madhustanga/' jenkins  > jenkins2file
+
+
+sed -i 's/yum/apt/g' jenkins 
+
+========================================================
+lsblk 
+
+
+=========================================================
+
+df ( disk filesystem)  -
+          It is used to report file system disk space usage, showing how much space is used and available on mounted file systems.
+
+
+df -h 
+df -m 
+
+In Windows, drives such as C:, D:, and E: are logical designations assigned to storage devices or partitions. Each drive letter represents a separate filesystem namespace, allowing users and applications to access files and directories on that specific storage unit. 
+
+
+In Linux, the concept of drive letters like C:, D:, and E: does not exist. Instead, Linux uses a single hierarchical directory structure that begins at the root directory (/). All storage devices, partitions, and network filesystems are integrated into this hierarchy by mounting them at specific directories
+
+
+df 
+df -h
+df -m 
+
+----------------------------------------------------------
+
+du -h <foldername/filename>
+
+du -sh 
+ 
+----------------------------------------------------------
+change the ownership of files and directories.:
+
+
+chmod (FILE PERMISSIONS) 
+
+The chmod command in Linux is used to change the file permissions. Permissions dictate who can read, write, or execute a file. Here's a comprehensive guide on using the chmod command:
+
+
+There are three types of users:
+
+u – the file owner (user)
+g – the group to which the file belongs
+o – others - everyone else 
+a – all (user, group, and others)
+
+------------------
+change the permissions of a file or directory --  madhu 
+
+owner/user    |  group  | others 
+
+rwx               rwx     rwx 
+
+r - read - 4
+w - write - 2
+x - execute - 1 
+
+
+Modes
+Modes can be specified using symbolic or numeric (octal) notation.
+
+Symbolic Notation
+r – read permission
+w – write permission
+x – execute permission
+
+
+
+Numeric (Octal) Notation
+4 – read permission
+2 – write permission
+1 – execute permission
+
+The numeric mode is a combination of these values. For example:
+
+7 – read, write, and execute (4 + 2 + 1)
+6 – read and write (4 + 2)
+5 – read and execute (4 + 1)
+4 – read only
+
+
+
+
+chmod -R 
+
+
+Make a script executable:
+Secure private SSH keys:
+Set directory to allow access only to owner:
+================================================
+
+What is a Group?
+A group is a collection of users. It helps manage permissions for multiple users efficiently.
+
+Each file in Linux is owned by:
+
+One user (owner)
+
+One group
+
+==========================================
+/etc/passwd	------   Stores user info (usernames, UID, shell, home)
+/etc/group	-------  Lists groups and their members
+/etc/shadow	------    Stores encrypted passwords
+==================================================================
+Shared Directory for Team::
+
+groupadd team
+usermod -aG team madhu
+usermod -aG team kiran
+mkdir /project
+chown root:team /project
+chmod 770 /project
+
+======================================
+
+CHOWN :
+
+change the ownership of files and directories.
+
+FILE & DIRECTORY OWNERSHIP :
+
+The chown command in Linux is used to change the ownership of files and directories. This command allows you to change both the user and group ownership of a file or directory.
+
+chown [options] user[:group] file(s)
+
+1. Change the Owner of a File:
+
+      chown newuser filename
+	  
+2. Change the Group of a File:
+	  
+	  chown :newgroup filename
+
+3.Change Both the Owner and Group of a File:
+     
+	  chown newuser:newgroup filename
+	  
+4. Change the Owner and Group of Multiple Files:
+
+     chown newuser:newgroup file1 fllile2 file3
+=============================================================================
+
+
+================================================================
+inode :
+
+an inode (index node) is a data structure that stores metadata about a file or directory. Every file and directory on the filesystem is associated with an inode, which contains important information about the file's attributes and location on disk.
+
+
+File Metadata:
+
+File type: --  regular file, directory, symbolic link, , etc.
+Permissions:   (read, write, execute) for the owner, group, and others.
+Owner and Group:    User ID (UID) and group ID (GID)  
+Timestamps:  
+   Last access time (atime):           Last time the file was accessed.
+   Last modification time (mtime):     Last time the file's content was modified.
+   Last status change time (ctime):  Last time the file's metadata (permissions, owner, etc.) was changed.
+   File Size:                      Size of the file in bytes.
+   
+   
+ls -i   
+ll -i 
+   
+---------------------------------------------------
+
+softlink vs hardlink 
+
+ln srcpath destlink 
+
+ln -s srcpath destlink 
+
+
+In Linux, both soft links (symbolic links) and hard links are ways to reference files. They serve different purposes and have distinct characteristics. Let's explore each with examples:
+
+ln -s /path/to/target/file   /path/to/link
+
+ln  /path/to/target/file   /path/to/hardlink
+
+
+---------------------------------
+File manipulations 
+
+
+cut -d ":" -f 1 /etc/passwd
+cut -d ":" -f 1,6 /etc/passwd
+cut -d ":" -f 1,2,3,4 /etc/passwd
+cut -d ":" -f 1-4 /etc/passwd
+
+cat /etc/passwd | cut -d ":" -f 1,6
+
+=========================================
+
+awk command 
+
+
+awk  -F":" '{print $1 }' /etc/passwd
+
+ awk -F":" '{print $1 "=" $6}'  /etc/passwd
+
+
+cat /etc/passwd | awk -F":" '{print $1 "=" $6}'
+
+
+cat /etc/passwd | awk -F":" '{print $1}'
+=========================================================================
+winscp
+
+------------------------------
+scp src dest 
+
+
+
+scp -i madhu.pem Prabhas ec2-user@ec2-54-92-176-107.compute-1.amazonaws.com:/tmp/Prabhas
+
+
+------------------------
+
+5.-R – Change ownership recursively for directories and their contents:
+chown -R newuser:newgroup /path/to/directory
+==============================================================
+
+
+uname 
+uname -a 
+man 
+
+hostname 
+
+hostname -I
+
+hostname <newservername> 
+
+
+
+=========================================================================
+
+
+SHELL SCRIPT :
+
+
+[root@linux opt]# cat ./devopesenginner.sh
+
+
+#!/bin/bash
+
+
+
+echo "Enter the DevOps engineer Name:"
+read Name
+mkdir $Name
+cd $Name
+touch linux
+touch jenkins
+touch ansible
+touch k8s
+mkdir aws
+cd aws
+touch ec2
+touch efs
+touch eks
+touch route53
+touch s3
+[root@linux opt]#
+
+
+
+AWS LINUX
+
+============================
+ON-PREMISES : What is On-Premises?
+============================
+
+On-premises means:
+You own and manage everything yourself (your own datacenter) 
+
+This includes:
+- Servers (big computers)
+- Storage
+- Networking equipment
+- Power
+- Cooling
+- Security
+- IT staff to maintain it
+
+
+============================
+CLOUD : What is Cloud?
+============================
+
+Cloud means:
+Using someone else’s computers (servers) over the internet
+instead of owning and managing your own.
+
+
+============================
+EXAMPLE: Running a Website
+============================
+
+ON-PREMISES:
+
+- Buy a server
+- Install OS and software
+- Set up networking
+- Handle power & cooling
+- Fix hardware issues
+- Upgrade when traffic grows
+- Limited storage - External hard drive or  server
+- Limited space
+- If it breaks → data loss risk
+
+Result:
+- Takes time
+- High cost
+- Requires expertise
+
+
+CLOUD:
+
+- Create an account
+- Click "Create Server"
+- Choose server size
+- Pay per hour or usage
+- Scale up or down anytime AS PER REQUIREMENT 
+
+Result:
+- Fast
+- Flexible
+- Beginner-friendly
+
+
+============================
+KEY BENEFITS OF CLOUD
+(Why Cloud is Popular)
+============================
+
+- No hardware to buy
+- Pay only for what you use (Ondemand )
+- Easy to scale resources
+- High availability
+- High Scalability
+- Faster to start
+- Global access from anywhere
+
+
+============================
+WHEN ON-PREMISES IS STILL USED
+============================
+
+Some companies prefer on-premises when:
+
+- Strict data security laws exist
+- Internet is not reliable
+- Legacy systems are in use
+- Full control over systems is required
+
+=========================================================================
+LINUX BASICS FOR CLOUD
+
+=====================================
+1) WHY LINUX? WHY NOT WINDOWS?
+=====================================
+
+Simple Answer:
+Cloud runs mostly on Linux, not Windows.
+
+
+Why Linux?
+
+- Free (open source) 
+- Stable (Runs for years)
+- Lightweight
+- Secure & Reliable 
+- Highly customizable
+- Perfect for servers
+
+Why not Windows?
+
+- Windows is mainly designed for desktop users
+- Heavier OS
+- Paid license
+- Less suitable for large-scale servers
+
+
+=====================================
+LINUX vs WINDOWS 
+=====================================
+
+Feature           Linux                     Windows
+------------------------------------------------------------
+Cost              Free (Open-source)        Paid license
+Performance       Fast & lightweight        Heavy
+Stability         Runs for years             Needs restarts
+Security          Very secure               More virus-prone
+Automation        Excellent (CLI-based)     Limited
+Server usage      Very high                 Less
+Cloud support     Default choice             Secondary
+
+
+=====================================
+UNIX (ORIGINAL)
+=====================================
+
+- Old operating system
+- Created in the 1970s
+- Expensive
+- Mostly used in big enterprises
+- Examples:
+  - AIX
+  - Solaris
+  - HP-UX
+
+
+=====================================
+LINUX (INSPIRED BY UNIX)
+=====================================
+
+- Open-source
+- Free
+- Created in 1991
+- Community-driven
+- Runs everywhere:
+  - Cloud
+  - Mobile
+  - Servers
+
+
+=====================================
+UNIX vs LINUX 
+=====================================
+
+UNIX                     Linux
+------------------------------------------------
+Proprietary              Open-source
+Paid                     Free
+Limited vendors          Huge community
+Less flexible            Highly customizable
+Legacy systems           Used everywhere today
+
+
+=====================================
+FEW IMPORTANT FACTS
+=====================================
+
+- Android is based on Linux
+- AWS runs mostly on Linux
+- Google runs on Linux
+- Facebook runs on Linux
+- Around 90% of internet servers run Linux
+- Linux is the backbone of Cloud.
+
+
+
+MAJOR LINUX DISTRIBUTION FAMILIES 
+
+
+RHEL 
+UBUNTU
+AMAZON LINUX 
+DEBIAN
+
+
+
+==================================================
+
+LINUX ARCHITECTURE:
+
+
+
+==================================================
+AWS FREE TIER 
+
+
+AWS Free Tier allows new users to try AWS services
+without paying immediately.
+
+It is mainly used for:
+- Learning AWS
+- Practice
+- Small experiments
+- Beginners in Cloud
+
+
+========================================
+AWS FREE TIER – CURRENT USAGE MODEL
+(NEW ACCOUNTS)
+========================================
+
+For new AWS accounts:
+
+- AWS offers a Free Plan with credits
+- You can get up to $200 AWS credits
+  - $100 at signup
+  - Up to $100 by completing learning activities
+
+- Valid for:
+  - 6 months
+  - OR until credits are used (whichever comes first)
+
+- No charges unless you upgrade to Paid Plan
+
+
+========================================
+IS IT FREE FOR 1 YEAR OR 6 MONTHS?
+========================================
+
+- Older AWS accounts (created earlier):
+  - Had 12 months Free Tier for many services
+
+- New AWS accounts:
+  - Mostly follow 6-month Free Plan with credits
+
+Note:
+- AWS model may change over time
+- Always check usage limits in AWS console
+
+
+========================================
+ALWAYS FREE SERVICES
+(NO EXPIRY – WITH LIMITS)
+========================================
+
+Some services are free every month
+within certain limits, even after credits end.
+
+Examples:
+- AWS Lambda
+  - 1 million free requests per month
+- Amazon S3
+  - Limited free storage
+- Amazon DynamoDB
+  - Free storage and read/write capacity
+
+(Usage limits apply)
+
+
+========================================
+IMPORTANT POINTS TO REMEMBER
+========================================
+
+- Credit card is required to create AWS account
+- AWS follows pay-as-you-use model
+- If you exceed free limits → you will be charged
+- Always monitor billing dashboard
+
+
+========================================
+FINAL SUMMARY
+========================================
+
+AWS Free Tier is a starter pack for beginners.
+
+- New users get free credits (valid ~6 months)
+- Some services are always free within limits
+- Best way to learn AWS hands-on
+- Be careful with usage to avoid charges
+
+
+==============
+======================================================
+
+DATE: 19 DEC 25
+
+
+linux :
+
+clear --- ctrl +L
+
+whoami
+
+hostname 
+sudo su - 
+hostnamectl set-hostname linuxsrv
+ 
+pwd -- C:\Users\SK NAGUL\Desktop\test\dir1
+
+
+touch file1 file2 file3
+
+mkdir dir1 dir2 dir3 
+
+ls
+ls -lrth
+ll
+ls -la
+
+rm -rf fname/dirname 
+
+cd dirname
+
+cd ..
+
+cat fname 
+
+yum install <pkgname>
+
+history
+
+[root@linuxsrv ~]# history
+    1  hostname
+    2  clear
+    3  pwd
+    4  ls
+    5  ll
+    6  touch file1 file2 file3
+    7  ls
+    8  ll
+    9  mkdir dir1 dir2 dir3
+   10  ll
+   11  clear
+   12  ls -lrth
+   13  ls -la
+   14  ll
+   15  rm -rf file2
+   16  ll
+   17  rm -rf  dir2/
+   18  ll
+   19  ls
+   20  ll
+   21  cd dir1
+   22  pwd
+   23  ll
+   24  touch chiru naga bala venky
+   25  ll
+   26  mkdir pavan
+   27  ll
+   28  cd pavan/
+   29  ll
+   30  pwd
+   31  cd ..
+   32  pwd
+   33  cd ..
+   34  ls
+   35  ll
+   36  pwd
+   37  L
+   38  ll
+   39  vim file1
+   40  cat file
+   41  cat file1
+   42  git
+   43  yum install git
+   44  git --version
+   45  java
+   46  yum install java -y
+   47  java --version
+   48  history
+   
+   ==========================================================
+   
+   
+   DATE: 22 DEC 25
+   
+   root dir --> / 
+
+Filesystem Hierarchy Standard (FHS):
+ 
+ 
+The Filesystem Hierarchy Standard (FHS) is a set of guidelines that define the structure and organization of directories and files on Unix-like operating systems, including Linux. It aims to ensure consistency and compatibility between different distributions of Linux, making it easier for software developers, administrators, and users to navigate and understand the file system. Here are the key components of the FHS:
+
+Root Directory (/)
+/bin: Essential command binaries that are required for system operation (e.g., ls, cp, mv).
+
+/boot: Files needed for the boot process, including boot loader configuration files and kernels.
+
+/dev: Device files representing hardware devices attached to the system (e.g., /dev/sda for the first SATA drive).
+
+/etc: Configuration files for the system and installed applications (e.g., /etc/passwd for user information).
+
+/home: Home directories for regular users (e.g., /home/ec2-user).
+
+/lib: Shared libraries needed by programs in /bin and /sbin.
+
+/media: Mount points for removable media (e.g., USB drives).
+
+/mnt: Mount points for temporary mounted filesystems.
+
+/opt: Optional software packages that are not part of the operating system distribution.
+
+/sbin: System binaries essential for system administration, typically used by the root user.
+
+/srv: Data for services provided by the system (e.g., web server data).
+
+/tmp: Temporary files that may be deleted between reboots.
+
+/usr: Secondary hierarchy for read-only user data; contains the majority of user utilities and applications.
+
+/var: Variable data files, such as logs, spool files, and temporary files that persist between reboots.
+
+---------------------
+
+root --> /
+ll
+/bin – binary or executable programs.
+ /sbin – binary executable programs for an administrator.
+/etc – system configuration files.
+/home – home directory. It is the default current directory.
+/root - home directory of root user 
+/opt – optional or third-party software.
+/tmp – temporary space, typically cleared on reboot.
+/usr – User related programs.
+/var – log files.
+
+================================
+
+nested dir 
+
+mkdir -p a/b/c/d/e
+
+
+cp  -rp src.path   dest.path
+
+
+absolute path 
+relative path 
+
+
+mv src.path dest
+
+mv oldname newname
+=========================
+[root@linuxserver opt]# history
+    1  whoami
+    2  hostnamectl set-hostname linuxserver
+    3  exit
+    4  pwd
+    5  cd /
+    6  pwd
+    7  ll
+    8  ls
+    9  ll
+   10  ll bin/
+   11  ll
+   12  ll sbin/
+   13  ll
+   14  ll /home/
+   15  exit
+   16  pwd
+   17  cd /opt/
+   18  pwd
+   19  ll
+   20  rm -rf aws/
+   21  ll
+   22  touch file1 file2
+   23  mkdir dir1 dir2
+   24  ll
+   25  cd dir2
+   26  ll
+   27  touch java python
+   28  ll
+   29  mkdir chiru bala naga venky
+   30  ll
+   31  cd chiru/
+   32  pwd
+   33  ll
+   34  touch pavan nagababu
+   35  pwd
+   36  cd ..
+   37  pwd
+   38  cd ..
+   39  ll
+   40  yum install tree
+   41  yum install tree -y
+   42  ll
+   43  tree
+   44  rm -rf file2
+   45  tree
+   46  ll
+   47  clear
+   48  tree
+   49  mkdir -p dir1/a/b/c/d/e
+   50  ll
+   51  tree
+   52  touch dir1/a/b/maheshbabau
+   53  tree
+   54  mkdir /opt/dir2/naga/akhil
+   55  tree
+   56  cp -rp dir2/java dir1/a/b/c/d/java
+   57  tree
+   58  cp -rp /opt/dir2/python  /opt/dir1/a/python
+   59  tree
+   60  history
+   61  ll
+   62  tree
+   63  cd dir1/a/b/
+   64  ll
+   65  pwd
+   66  cd dir2
+   67  ll
+   68  pwd
+   69  cd ../../../dir2/
+   70  ll
+   71  cd /opt/dir1/a/b
+   72  cd /opt/dir2
+   73  ll
+   74  cd /opt/
+   75  tree
+   76  mv /opt/file1 /opt/dir1/a/file1
+   77  tree
+   78  mv dir2/java dir1/java
+   79  ll
+   80  tree
+   81  ll
+   82  mv dir1 devops
+   83  ll
+   84  touch madhu
+   85  ll
+   86  mv madhu kiran
+   87  ll
+   88  histroy
+
+
+
+
+========================
+
+DATE : 23 DEC 25:
+
+
+useradd uname 
+passwd uname
+
+su - uname
+
+userdel -r uname 
+
+user-home :   /home/uname
+
+cat /etc/passwd
+
+usermod -c "DevOpsUser" madhu
+
+============================================
+cat /etc/passwd 
+tail -n /etc/passwd
+tail -100f /etc/passwd
+head -n /etc/passwd
+more fname
+-----------------------------------
+
+touch fname 
+
+echo "WELCOME TO MINDCIRCUIT devops" > mcfile
+echo "be ready to work hard " >> mcfile
+--------
+
+editor: vi / vim / NANO
+
+
+vim fname 
+
+esc -- i    < insert mode > 
+
+   ----- data ----
+   ----- data ----
+   ----- data ----
+esc : w
+
+esc : q
+
+esc : wq!
+
+=================
+
+LINUX ---> VIM / NANO 
+VI/VIM EDITOR:
+
+gg - TOP LINE
+G - Ground 
+yy -- copy 
+n-yy - 
+p - paste 
+
+dd - delete a line 
+n-dd 
+
+u - undo 
+dw - delete word 
+
+----
+set nu
+set nonu 
+-------
+/madhu  (to search) 
+/touch
+/useradd
+
+n --> next 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+useradd madhu 
+ 
+
+===================================
+
+cat /etc/passwd
+
+tail -n /etc/passwd
+
+head -n <fname>
+
+more fname
+
+==================
+
+wc  /etc/passwd
+
+wc -l /etc/passwd
+
+wc  -w /etc/passwd
+
+wc  -c /etc/passwd
+
+=================================
+
+yum install java 
+
+
+===============================================
+
+
+
+==================================================
+
+
+=============================================
+
+diff file1 file2
+sdiff file1 file2
+==============
+
+
+touch 
+
+vim 
+
+create a file using touch , vim , echo 
+
+echo " docker k8s terraform jenkins " > file2  ( overwrite) 
+echo " aws linux git github " >> file2  ( append) 
+
+
+========================
+
+uptime 
+
+top 
+
+lscpu 
+
+free 
+free -m 
+free -g 
+
+==================================
+
+wget <link> 
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.106/bin/apache-tomcat-9.0.106.zip
+
+=================================
+
+zip 
+
+unzip apache-tomcat-9.0.106.zip
+
+zip -r name.zip <folder> 
+
+
+====================
+
+tar.gz
+
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.106/bin/apache-tomcat-9.0.106.tar.gz
+
+
+tar -xvf apache-tomcat-9.0.106.tar.gz
+
+tar -cvf name.tar.gz <folder> 
+
+===================================
+===================================
+networking commands :
+
+PING 
+---------------------------------
+TELNET 
+
+Telnet is a network protocol and command-line tool used to connect to remote systems or devices over TCP. It lets you manually open a TCP connection to a specific port on a remote host.
+
+   telnet www.google.com 443
+    telnet www.mindcircuit.in 443
+    telnet 100.26.144.255 8080
+   telnet 100.26.144.255 443
+
+----------------------------------------------------------
+
+DATE: 26 DEC 25
+
+
+
+NETSTAT 
+
+The netstat command is a networking tool used to display network connections, routing tables, interface statistics, and more.
+  netstat - an 
+
+
+  
+----------------------------------------------------------
+GREP:
+
+grep -i "madhu" linuxfile
+
+grep -iR "madhu"
+
+----------------------------------------------------------
+ps --> running processes on a system. It provides a snapshot of the currently active processes, including details like process IDs (PIDs), memory usage, CPU time, and more.
+
+ps -ef 
+Shows processes for all users, not just the current session.
+
+
+ps -ef | grep tomcat 
+
+
+kill -9 pid 
+
+
+----------------------------------------------------------
+
+find / -name <fname/dirname> 
+
+find / -name docker -type f
+find / -name docker -type 
+
+========================================================
+
+sed command --> sed 's/madhu/batch17/' test > test2
+
+Replaces occurrences of a pattern with a specified replacement.
+Syntax: s/pattern/replacement/flags
+
+sed 's/madhu/kiran/' input.txt     # Replace first occurrence of 'madhu' with 'madhumadhu' in each line
+sed 's/madhu/kiran/g' input.txt    # Replace all occurrences of 'madhu' with 'madhumadhu' in each line
+sed 's/madhu/kiran/2' input.txt    # Replace the second occurrence of ''madhu' with 'madhumadhu' in each line
+
+
+sed 's/userstanga/madhustanga/' jenkins
+sed 's/userstanga/madhustanga/' jenkins  > jenkins2file
+
+
+sed -i 's/yum/apt/g' jenkins 
+
+========================================================
+lsblk 
+
+
+=========================================================
+
+df ( disk filesystem)  -
+          It is used to report file system disk space usage, showing how much space is used and available on mounted file systems.
+
+
+df -h 
+df -m 
+
+In Windows, drives such as C:, D:, and E: are logical designations assigned to storage devices or partitions. Each drive letter represents a separate filesystem namespace, allowing users and applications to access files and directories on that specific storage unit. 
+
+
+In Linux, the concept of drive letters like C:, D:, and E: does not exist. Instead, Linux uses a single hierarchical directory structure that begins at the root directory (/). All storage devices, partitions, and network filesystems are integrated into this hierarchy by mounting them at specific directories
+
+
+df 
+df -h
+df -m 
+
+----------------------------------------------------------
+
+du -h <foldername/filename>
+
+du -sh 
+ 
+----------------------------------------------------------
+change the ownership of files and directories.:
+
+
+chmod (FILE PERMISSIONS) 
+
+The chmod command in Linux is used to change the file permissions. Permissions dictate who can read, write, or execute a file. Here's a comprehensive guide on using the chmod command:
+
+
+There are three types of users:
+
+u – the file owner (user)
+g – the group to which the file belongs
+o – others - everyone else 
+a – all (user, group, and others)
+
+------------------
+change the permissions of a file or directory --  madhu 
+
+owner/user    |  group  | others 
+
+rwx               rwx     rwx 
+
+r - read - 4
+w - write - 2
+x - execute - 1 
+
+
+Modes
+Modes can be specified using symbolic or numeric (octal) notation.
+
+Symbolic Notation
+r – read permission
+w – write permission
+x – execute permission
+
+
+
+Numeric (Octal) Notation
+4 – read permission
+2 – write permission
+1 – execute permission
+
+The numeric mode is a combination of these values. For example:
+
+7 – read, write, and execute (4 + 2 + 1)
+6 – read and write (4 + 2)
+5 – read and execute (4 + 1)
+4 – read only
+
+
+
+
+chmod -R 
+
+
+Make a script executable:
+Secure private SSH keys:
+Set directory to allow access only to owner:
+================================================
+
+What is a Group?
+A group is a collection of users. It helps manage permissions for multiple users efficiently.
+
+Each file in Linux is owned by:
+
+One user (owner)
+
+One group
+
+==========================================
+/etc/passwd	------   Stores user info (usernames, UID, shell, home)
+/etc/group	-------  Lists groups and their members
+/etc/shadow	------    Stores encrypted passwords
+==================================================================
+Shared Directory for Team::
+
+groupadd team
+usermod -aG team madhu
+usermod -aG team kiran
+mkdir /project
+chown root:team /project
+chmod 770 /project
+
+======================================
+
+CHOWN :
+
+change the ownership of files and directories.
+
+FILE & DIRECTORY OWNERSHIP :
+
+The chown command in Linux is used to change the ownership of files and directories. This command allows you to change both the user and group ownership of a file or directory.
+
+chown [options] user[:group] file(s)
+
+1. Change the Owner of a File:
+
+      chown newuser filename
+	  
+2. Change the Group of a File:
+	  
+	  chown :newgroup filename
+
+3.Change Both the Owner and Group of a File:
+     
+	  chown newuser:newgroup filename
+	  
+4. Change the Owner and Group of Multiple Files:
+
+     chown newuser:newgroup file1 fllile2 file3
+=============================================================================
+
+
+================================================================
+inode :
+
+an inode (index node) is a data structure that stores metadata about a file or directory. Every file and directory on the filesystem is associated with an inode, which contains important information about the file's attributes and location on disk.
+
+
+File Metadata:
+
+File type: --  regular file, directory, symbolic link, , etc.
+Permissions:   (read, write, execute) for the owner, group, and others.
+Owner and Group:    User ID (UID) and group ID (GID)  
+Timestamps:  
+   Last access time (atime):           Last time the file was accessed.
+   Last modification time (mtime):     Last time the file's content was modified.
+   Last status change time (ctime):  Last time the file's metadata (permissions, owner, etc.) was changed.
+   File Size:                      Size of the file in bytes.
+   
+   
+ls -i   
+ll -i 
+   
+---------------------------------------------------
+
+softlink vs hardlink 
+
+ln srcpath destlink 
+
+ln -s srcpath destlink 
+
+
+In Linux, both soft links (symbolic links) and hard links are ways to reference files. They serve different purposes and have distinct characteristics. Let's explore each with examples:
+
+ln -s /path/to/target/file   /path/to/link
+
+ln  /path/to/target/file   /path/to/hardlink
+
+
+---------------------------------
+DATE: 31 DEC 2025
+
+File manipulations 
+
+
+cut -d ":" -f 1 /etc/passwd
+cut -d ":" -f 1,6 /etc/passwd
+cut -d ":" -f 1,2,3,4 /etc/passwd
+cut -d ":" -f 1-4 /etc/passwd
+
+cat /etc/passwd | cut -d ":" -f 1,6
+
+=========================================
+
+awk command 
+
+
+awk  -F":" '{print $1 }' /etc/passwd
+
+ awk -F":" '{print $1 "=" $6}'  /etc/passwd
+
+
+cat /etc/passwd | awk -F":" '{print $1 "=" $6}'
+
+
+cat /etc/passwd | awk -F":" '{print $1}'
+=========================================================================
+winscp
+
+------------------------------
+scp src dest 
+
+
+scp -i madhu.pem Prabhas ec2-user@ec2-54-92-176-107.compute-1.amazonaws.com:/tmp/Prabhas
+
+
+==============================================================
+
+
+uname 
+uname -a 
+man 
+
+hostname 
+
+hostname -I
+
+hostname <newservername> 
