@@ -1,6 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
@@ -8,26 +10,28 @@
     <version>4.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-	<properties>
-		<docker.image.prefix>kammana</docker.image.prefix>
-		<sonar.host.url>http://3.83.18.215:9000/</sonar.host.url>
+    <properties>
+        <docker.image.prefix>chalamalasett</docker.image.prefix>
+        <sonar.host.url>http://3.95.31.10:9000</sonar.host.url>
+        <sonar.projectKey>facebookapp</sonar.projectKey>
+        <sonar.projectName>facebookapp</sonar.projectName>
+    </properties>
 
-	</properties>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>NexusRepo</id>
+            <url>http://54.82.92.150:8081/repository/batch17d-repo-snapshot/</url>
+        </snapshotRepository>
 
-	<distributionManagement>
-		 <snapshotRepository>
-		    <id>NexusRepo</id>
-		    <url>http://54.82.92.150:8081/repository/batch17d-repo-snapshot/</url>
-		 </snapshotRepository>
-		
-		<repository>
-		    <id>NexusRepo</id>
-		    <url>http://54.82.92.150:8081/repository/batch17d-repo-release/</url>
-		</repository>
-  	</distributionManagement>
-    
+        <repository>
+            <id>NexusRepo</id>
+            <url>http://54.82.92.150:8081/repository/batch17d-repo-release/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -36,6 +40,14 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>4.0.0.4121</version>
+            </plugin>
+
         </plugins>
     </build>
+
 </project>
